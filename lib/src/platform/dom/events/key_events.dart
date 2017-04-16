@@ -118,7 +118,7 @@ class KeyEventsPlugin extends EventManagerPlugin {
   static Map<String, String> parseEventName(String eventName) {
     List<String> parts = eventName.toLowerCase().split(".");
     var domEventName = parts.removeAt(0);
-    if ((identical(parts.length, 0)) ||
+    if (parts.isEmpty ||
         !(domEventName == "keydown" || domEventName == "keyup")) {
       return null;
     }
@@ -130,7 +130,7 @@ class KeyEventsPlugin extends EventManagerPlugin {
       }
     }
     fullKey += key;
-    if (parts.length != 0 || identical(key.length, 0)) {
+    if (parts.isNotEmpty || key.isEmpty) {
       // returning null instead of throwing to let another plugin process the event
       return null;
     }

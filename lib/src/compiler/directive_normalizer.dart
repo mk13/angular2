@@ -109,8 +109,8 @@ class DirectiveNormalizer {
     }).toList();
     var encapsulation = templateMeta.encapsulation;
     if (identical(encapsulation, ViewEncapsulation.Emulated) &&
-        identical(allResolvedStyles.length, 0) &&
-        identical(allStyleAbsUrls.length, 0)) {
+        allResolvedStyles.isEmpty &&
+        allStyleAbsUrls.isEmpty) {
       encapsulation = ViewEncapsulation.None;
     }
     return new CompileTemplateMetadata(

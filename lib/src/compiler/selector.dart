@@ -175,8 +175,7 @@ class SelectorMatcher {
     var selectable =
         new SelectorContext(cssSelector, callbackCtxt, listContext);
     if (element != null) {
-      var isTerminal =
-          identical(attrs.length, 0) && identical(classNames.length, 0);
+      var isTerminal = attrs.isEmpty && classNames.isEmpty;
       if (isTerminal) {
         this._addTerminal(matcher._elementMap, element, selectable);
       } else {
@@ -185,8 +184,8 @@ class SelectorMatcher {
     }
     if (classNames != null) {
       for (var index = 0; index < classNames.length; index++) {
-        var isTerminal = identical(attrs.length, 0) &&
-            identical(index, classNames.length - 1);
+        var isTerminal =
+            attrs.isEmpty && identical(index, classNames.length - 1);
         var className = classNames[index];
         if (isTerminal) {
           this._addTerminal(matcher._classMap, className, selectable);

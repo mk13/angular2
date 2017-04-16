@@ -165,7 +165,7 @@ class CompileView implements NameResolver {
   }
 
   o.Expression createLiteralArray(List<o.Expression> values) {
-    if (identical(values.length, 0)) {
+    if (values.isEmpty) {
       return o.importExpr(Identifiers.EMPTY_ARRAY);
     }
     var proxyExpr =
@@ -190,7 +190,7 @@ class CompileView implements NameResolver {
 
   o.Expression createLiteralMap(
       List<List<dynamic /* String | o . Expression */ >> entries) {
-    if (identical(entries.length, 0)) {
+    if (entries.isEmpty) {
       return o.importExpr(Identifiers.EMPTY_MAP);
     }
     var proxyExpr = new o.ReadClassMemberExpr('_map_${this.literalMapCount++}');
